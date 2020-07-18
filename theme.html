@@ -52,27 +52,23 @@
         });
     </script> <!-- / PHOTOSETS STUFF -->
 
-    <!-- FONT AWESOME IMPORT
-         FIND PRETTY ICONS FOR YOUR TAGS HERE https://fontawesome.com/icons?d=gallery -->
-         
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Noto+Sans+JP:wght@900&display=swap" rel="stylesheet">
+    <!-- FONT AWESOME IMPORT -->
+    <script src="https://kit.fontawesome.com/087afde393.js" crossorigin="anonymous"></script>
 
-<script src="https://kit.fontawesome.com/087afde393.js" crossorigin="anonymous"></script>
+    <!-- FONT IMPORTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Noto+Sans+JP:wght@100;900&display=swap" rel="stylesheet">
 
     <!-- PLUG SCRIPTS IN HERE IF YOU NEED THEM -->
-
-<script src="https://kit.fontawesome.com/087afde393.js" crossorigin="anonymous"></script>
 
     <title>{title}</title>
 
     <style>
 
-        /* ----------------------------------- DUMB TWEAKS ----------------------------------- */
+/* ----------------------------------- DUMB TWEAKS ----------------------------------- */
 
         /* fix padding & margin issues; make smooth transitions */
         * {
             box-sizing: border-box;
-            transition: .2s;
         }
 
         /* make all text the same size (bc double plus small text is gross) */
@@ -87,7 +83,7 @@
         }
         
 
-        /* ----------------------------------- BASIC FORMATTING ----------------------------------- */
+/* ----------------------------------- BASIC FORMATTING ----------------------------------- */
 
         body {
             background: {color:body background};
@@ -103,30 +99,33 @@
         }
 
         blockquote {
-        border-left: 5px solid #000;
-        padding: 0 0 0 10px;
-        margin: 0 0 0 10px;
+            border-left: 1px solid #000;
+            padding: 0 0 0 10px;
+            margin: 0 0 0 10px;
         }
 
         i,
         em {
-        color: {color:bold and italic};
+            color: {color:bold and italic};
         }
 
         b,
         strong {
-        color: {color:bold and italic};
-        font-weight:700;
+            color: {color:bold and italic};
+            font-weight:700;
+        }
+        
+        p {
+            line-height:1.8rem;
         }
 
         h1{
-            text-align:left;
-            font-size:3rem;
-            font-weight:900;
-            color:{color:bold and italic};
             font-family: 'Noto Sans JP', sans-serif;
-            text-transform: uppercase;
-            margin:0;
+            text-transform:uppercase;
+            color:{color:bold and italic};
+            margin:0 0 0 -.5rem;
+            font-size:5rem;
+            line-height:4.2rem;
         }
 
         h2{
@@ -162,64 +161,8 @@
         a:hover{
             color:{color:accent dark};
         }
-    
-    /* SIDEBAR */
-    
-    h1.title {
-      font-family: 'Noto Sans JP', sans-serif;
-      text-transform: uppercase;
-      color: #fff;
-      margin: 0;
-      font-size: 6rem;
-      line-height: 5rem;
-    }
-
-    h1.stroke {
-      color: rgba(0, 0, 0, 0);
-      -webkit-text-stroke: 2px #fff;
-    }
-    
-    h1.fill {
-      color: {color:accent};
-      z-index: -1;
-      position: relative;
-    }
-    
-/* ------------------ SCROLLBAR ------------------ */
-    
-    .top {
-      position: fixed;
-      bottom: 4rem;
-      left: 10vw;
-    }
-    
-    .desc{
-        color:#fff;
-    }
-    .top-sidebar {
-      background: {color:accent};
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 5vw;
-      height: 83vh;
-    }
-    
-    a.nav {
-      text-transform: uppercase;
-      padding-right: .8rem;
-      color:#fff;
-    }
-    
-    .navnum {
-      z-index: -1;
-      color: {color:accent};
-      font-weight: 900;
-      font-size: 2rem;
-      margin-right: -1.5rem;
-    }
         
-/* ------------------ SCROLLBAR ------------------ */
+/* ----------------------------------- SCROLLBAR ----------------------------------- */
 
         ::-webkit-scrollbar {
             width: 0;
@@ -236,19 +179,80 @@
             background-clip:padding-box;
             border:2px solid rgba(0, 0, 0, 0);
         }
+    
+/* ----------------------------------- SIDEBAR ----------------------------------- */
+    
+    /* ------------------ SIDEBAR CONTAINER SETUP ------------------ */
+    
         
-        /* ----------------------------------- CONTAINER SETUP ----------------------------------- */
+    /* ecto why are some of these tabbed four and some of these tabbed two?
+        fuck you that's why */
+        
+    .sidebar-color{
+      background:{color:accent};
+      position:fixed;
+      bottom:0;
+      left:0;
+      width:5vw;
+      height:90vh;
+    }
+    
+    .sidebar{
+      position:fixed;
+      bottom:1rem;
+      left:10vw;
+      width:470px;
+      color:#fff;
+    }
+        
+    /* ------------------ FANCY HEADER SHIT ------------------ */
+        
+        
+    .sidebar h1{
+        color:#fff;
+    }
+    
+    h1 span{
+      display:block;
+    }
+    
+    .stroke{
+      color:rgba(0,0,0,0);
+      -webkit-text-stroke: 2px #fff;
+    }
+    
+    .fill{
+      color:{color:accent};
+      z-index:-1;
+      position:relative;
+    }
+        
+    /* ------------------ NAV LINK STYLING ------------------ */
+    
+    a.nav{
+      text-transform:uppercase;
+      padding-right:.8rem;
+      color:#fff;
+    }
+    
+    .navnum{
+      z-index:-1;
+      color:{color:accent};
+      font-weight:900;
+      font-size:2rem;
+      margin-right:-1.5rem;
+    }
+        
+/* ----------------------------------- POSTS ----------------------------------- */
+        
+        /* ------------------ CONTAINER SETUP ------------------ */
 
         #posts-wrapper{
-          position:fixed;
-          top:0;
-          right:2rem;
-          padding-top:8rem;
-          padding-bottom:8rem;
-          width:550px;
-          height:100vh;
-          overflow-y:scroll; 
-          background-color:rgba(22,21,26,.6);
+          height:auto;
+          position:absolute;
+          padding:1rem;
+          top:5rem;
+          right:0;
         }
         
         .entry{
@@ -284,12 +288,12 @@
         
         p.left{
           float:left;
-          margin-top:1px;
+          margin-top:-1px;
         }
         
         p.right{
           float:right;
-          margin-top:.1rem;
+          margin-top:-1px;
         }
         
         p.right a{
@@ -297,7 +301,7 @@
         }
 
 
-        /* ------------------ FOOTER ------------------ */
+        /* ------------------ POST FOOTER ------------------ */
         
         .footer{
             margin-top:-.5rem;
@@ -335,7 +339,7 @@
             color:{color:accent};
         }
 
-        /* ----------------------------------- POST STYLING ----------------------------------- */
+/* ----------------------------------- POST STYLING ----------------------------------- */
 
         /* ------------------ PHOTOS & PHOTOSETS ------------------ */
 
@@ -362,27 +366,25 @@
         /* I don't know if the wrapper is entirely necessary but I'm using it anyway */
         .quote-wrapper .fas{
             color:{color:accent};
-            font-size:1.8rem;
+            font-size:4rem;
             text-shadow:1px 2px 0 {color:bold and italic},2px 3px 0 {color:accent dark};
         }
-
+        
         .quote{
             text-align:left;
-            margin:-2.2rem 0 10px 2.4rem;
+            margin:-3.8rem 0 1rem 5.5rem;
         }
 
+
         .quote h1{
+            font: 1rem 'Lato', sans-serif;
             color:{color:bold and italic};
-            text-transform:none;
-            text-align:left;
-            margin:0 0 .5rem 0;
             text-shadow:none;
             font-size:1.2rem;
-            font-weight:400 !important;
-        }
-        
-        .quote p{
-            margin-top:0;
+            font-weight:300;
+            text-transform:none;
+            line-height:1.5rem;
+            margin-bottom:1rem;
         }
 
         /* ------------------ CHAT ------------------ */
@@ -424,13 +426,50 @@
             max-height:100%;
         }
 
-        /* ------------------ MOBILE ------------------ */
+/* ----------------------------------- MOBILE STYLING ----------------------------------- */
 
-        @media screen and (max-width:1100px){
+        @media screen and (max-width:1140px){
+            
+            .sidebar{
+                width:370px;
+            }
             
         }
-
         
+         @media screen and (max-width:1010px){
+            
+            #posts-wrapper{
+                left:0;
+                top:10rem;
+                background:{color:body background};
+                width:570px;
+            }
+            
+            .sidebar-color{
+                display:none;
+            }
+            
+            .sidebar{
+                top:0;
+                left:1rem;
+            }
+            
+            .sidebar h1{
+                position: fixed;
+                height: 600%;
+                bottom: 0;
+                right: 0;
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+                border-left:3rem solid {color:accent};
+                padding-left:0rem;
+            }
+            
+            h1 span{
+                display:inline;
+            }
+            
+        }
 
     </style>
 
@@ -439,19 +478,20 @@
 <body>
 
 
-<div class="top-sidebar"></div>
-<div class="top">
-  <h1 class="title">HERETIC!</h1>
-  <h1 class="fill title">HERETIC!</h1>
-  <h1 class="stroke title">HERETIC!</h1>
-  <p class="desc">all the waste you see, that’s what I did, none of that happened to me. <br/>I did that. I made that. I killed that. I.  independent DIO.</p>
+<div class="sidebar-color"></div>
+<div class="sidebar">
+  <h1 class="title">HERETIC!
+  <span class="fill">HERETIC!</span>
+  <span class="stroke">HERETIC!</span>
+      
+  </h1>
+  <p class="desc">{description}</p>
   
   <a class="nav" href="/"><span class="navnum">01</span><span>home</span></a>
-  <a class="nav" href="/ask"> <span class="navnum">02. </span><span>ask</span></a>
+  <a class="nav" href="/ask"> <span class="navnum">02</span><span>ask</span></a>
   <a class="nav" href="/guidelines"> <span class="navnum">03</span><span>guidelines</span></a>
   <a class="nav" href="/i"> <span class="navnum">04</span><span>stats</span></a>
-  <a class="nav" href="/nav"><span class="navnum">05</span><span>nav</span></a>
-  <a class="nav" href="https://github.com/ectophage"> <span class="navnum">06</span><span>theme</span></a>
+  <a class="nav" href="https://github.com/ectophage/theme-heresiarch"> <span class="navnum">05</span><span>theme</span></a>
 </div>
 
 
