@@ -3,4 +3,4 @@ theme for eresiarch, a dio brando rp blog
 
 light version:
 
-![Light theme preview](https://64.media.tumblr.com/dadf58e81f2125e02ab53c84cc67c612/befd452f650d5ba8-be/s2048x3072/0391b296a7cb831617fc55b9564f1788fade9638.png)
+![Light theme preview](https://64.media.tumblr.com/6b5c8a85a2fc42e5a1032b3522680a43/1f316434861dc35d-5c/s2048x3072/47fe50b55813ce1baf1d3e6169fedef85e76628e.png)
