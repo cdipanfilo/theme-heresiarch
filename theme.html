@@ -81,6 +81,7 @@
             color:{color:text};
             overflow-x: hidden;
             overflow-y:scroll;
+            line-height:1.8rem;
         }
 
         ::selection{
@@ -106,34 +107,32 @@
         }
         
         p {
+            
+        }
+        
+        h1, h2, h3{
+            color:{color:bold and italic};
+            text-align: left;
+            font-weight:400;
+            text-transform:uppercase;
+        }
+        
+        h1{
+            font-size: 3rem;
+            letter-spacing: -2px;
+            line-height:2.4rem;
+            font-weight:900;
+        }
+        
+        h2{
+            font-size: 2rem;
+            letter-spacing: -2px;
             line-height:1.8rem;
         }
-
-        h1{
-            font-family: 'Noto Sans JP', sans-serif;
-            text-transform:uppercase;
-            color:{color:bold and italic};
-            margin:0 0 0 -.5rem;
-            font-size:5rem;
-            line-height:4.2rem;
-        }
-
-        h2{
-            text-align:left;
-            font-weight:900;
-            color:{color:bold and italic};
-            font-family: 'Noto Sans JP', sans-serif;
-            text-transform: uppercase;
-            margin:0;
-        }
-
+        
         h3{
-            text-align:left;
+            font-size: 1rem;
             font-weight:900;
-            color:{color:bold and italic};
-            font-family: 'Noto Sans JP', sans-serif;
-            text-transform: uppercase;
-            margin:0;
         }
 
         pre{
@@ -191,15 +190,21 @@
       position:fixed;
       bottom:1rem;
       left:10vw;
-      width:470px;
+      width:370px;
       color:#fff;
     }
         
     /* ------------------ FANCY HEADER SHIT ------------------ */
         
         
-    .sidebar h1{
+    .sidebar h1 {
+        font-family: 'Noto Sans JP', sans-serif;
+        text-transform:uppercase;
         color:#fff;
+        margin:0 0 0 -.5rem;
+        font-size:5rem;
+        line-height:4.2rem;
+        font-weight:900;
     }
     
     h1 span{
@@ -242,7 +247,7 @@
           position:absolute;
           padding:1rem;
           top:5rem;
-          right:0;
+          right:4rem;
         }
         
         .entry{
@@ -314,11 +319,20 @@
             color:{color:accent};
         }
         
+        .post-notes{
+            color:#fff;
+        }
+        
         /* ------------------ PAGINATION ------------------ */
+        
+        .pagination .fas{
+            color:#fff;
+        }
         
         .pagination{
             width:100%;
-            margin:-4rem auto auto auto;
+            letter-spacing:1rem;
+            padding-top:1rem;
         }
         
         .pagination a {
@@ -362,7 +376,7 @@
         
         .quote{
             text-align:left;
-            margin:-3.8rem 0 1rem 5.5rem;
+            margin:-4.6rem 0 1rem 5.5rem;
         }
 
 
@@ -375,6 +389,7 @@
             text-transform:none;
             line-height:1.5rem;
             margin-bottom:1rem;
+            letter-spacing:0px;
         }
 
         /* ------------------ CHAT ------------------ */
@@ -422,15 +437,23 @@
             
             .sidebar{
                 width:370px;
+                left:2rem;
             }
             
+            
+            .sidebar-color{
+                display:none;
+            }
         }
         
          @media screen and (max-width:1010px){
+             
+             /* look  I know this doesn't quite work but idk how to fix it other
+                than gutting it and trying again (which I might do eventually) */
             
             #posts-wrapper{
-                left:0;
-                top:10rem;
+                left:3rem;
+                top:11rem;
                 background:{color:body background};
                 width:570px;
             }
@@ -441,7 +464,8 @@
             
             .sidebar{
                 top:0;
-                left:1rem;
+                left:4rem;
+                width:540px;
             }
             
             .sidebar h1{
@@ -457,6 +481,10 @@
             
             h1 span{
                 display:inline;
+            }
+            
+            .pinned::before{
+                content: " ";
             }
             
         }
@@ -480,9 +508,22 @@
   <a class="nav" href="/"><span class="navnum">01</span><span>home</span></a>
   <a class="nav" href="/ask"> <span class="navnum">02</span><span>ask</span></a>
   <a class="nav" href="/guidelines"> <span class="navnum">03</span><span>guidelines</span></a>
-  <a class="nav" href="/i"> <span class="navnum">04</span><span>stats</span></a>
+  <a class="nav" href="/i"> <span class="navnum">04</span><span>about</span></a>
   <a class="nav" href="https://github.com/ectophage/theme-heresiarch"> <span class="navnum">05</span><span>theme</span></a>
-</div>
+
+<div class="pagination">
+    {block:Pagination}
+        {block:PreviousPage}<a href="{PreviousPage}"><i class="fas fa-chevron-left"></i></a>{/block:PreviousPage}
+            {block:JumpPagination length="5"}
+                {block:CurrentPage}<span class="current-page">{PageNumber}</span>{/block:CurrentPage}
+                {block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
+            {/block:JumpPagination}
+        {block:NextPage}<a href="{NextPage}"><i class="fas fa-chevron-right"></i></a>{/block:NextPage}
+    {/block:Pagination}
+    </div>
+        
+        
+    </div>
 
 
 <div id="posts-wrapper">
@@ -611,6 +652,7 @@
     </div> <!-- /POST-CONTENT -->
 
 
+
         <!-- FOOTER -->
             <div class="footer">
                 <p>
@@ -620,21 +662,16 @@
                 </p>
             
             </div> <!-- / FOOTER -->
+            
+            <!-- POST NOTES -->
+        {block:PostNotes}<div class="post-notes">{PostNotes}</div>{/block:PostNotes}
+        <!-- / POST NOTES -->
+        
             </div> <!-- / POST -->
 
 
+
         {/block:Posts}
-        
-                <div class="pagination">
-    {block:Pagination}
-        <!-- {block:PreviousPage}<a href="{PreviousPage}"><i class="fas fa-chevron-left"></i></a>{/block:PreviousPage} -->
-            {block:JumpPagination length="5"}
-                {block:CurrentPage}<span class="current-page">{PageNumber}</span>{/block:CurrentPage}
-                {block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
-            {/block:JumpPagination}
-        <!-- {block:NextPage}<a href="{NextPage}"><i class="fas fa-chevron-right"></i></a>{/block:NextPage} -->
-    {/block:Pagination}
-    </div>
         
         </div> <!-- /POSTS -->
     
