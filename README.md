@@ -1,5 +1,5 @@
 # theme-heresiarch
-theme for eresiarch, a dio brando rp blog
+a tumblr theme for a certain vampire.
 
 dark version:
 
